@@ -162,6 +162,35 @@
   .btn-outline.dark{border-color:var(--line-dark);color:var(--ink);}
   .btn-outline.dark:hover{border-color:var(--brand-green);color:var(--brand-green);}
   .nav-cta{display:flex;align-items:center;gap:18px;}
+    /* Mobile nav drawer */
+  .mobile-panel{
+    position:fixed; top:0; right:0; height:100vh; width:min(320px, 84vw);
+    background:var(--charcoal); border-left:1px solid var(--line);
+    z-index:200; transform:translateX(100%); transition:transform .35s ease;
+    display:flex; flex-direction:column; padding:28px 24px; overflow-y:auto;
+  }
+  .mobile-panel.open{transform:translateX(0);}
+  .mobile-panel-header{display:flex; justify-content:flex-end; margin-bottom:24px;}
+  .mobile-panel-close{background:none; border:none; color:var(--white); font-size:28px; line-height:1; padding:4px 8px; cursor:pointer;}
+  .mobile-panel a.mp-link{
+    display:block; color:var(--white); font-family:var(--display); font-size:18px;
+    padding:14px 0; border-bottom:1px solid var(--line); text-decoration:none;
+  }
+  .mobile-panel a.mp-link:active, .mobile-panel a.mp-link:hover{color:var(--acid);}
+  .mobile-panel .mp-sub{padding-left:14px;}
+  .mobile-panel .mp-sub a.mp-link{font-size:15px; color:var(--steel); border-bottom:none; padding:8px 0;}
+  .mobile-panel .mp-sub a.mp-link:hover{color:var(--acid);}
+  .mobile-panel .mp-group-title{
+    font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--steel); padding:12px 0 4px;
+  }
+  .mobile-panel .mp-cta{display:flex; flex-direction:column; gap:12px; margin-top:24px;}
+  .mobile-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:190;
+    opacity:0; visibility:hidden; transition:opacity .35s ease;
+  }
+  .mobile-overlay.open{opacity:1; visibility:visible;}
+  body.no-scroll{overflow:hidden;}
   .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;}
   .burger span{width:22px;height:2px;background:var(--white);}
   @media(max-width:980px){
@@ -869,6 +898,14 @@
       <a href="contact.html" class="btn btn-outline">Contact</a>
       <a href="contact.html" class="btn btn-acid">Get a Free Quote</a>
       <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="mobile-overlay"></div>
+  <div class="mobile-panel">
+    <div class="mobile-panel-header">
+      <button class="mobile-panel-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-panel-body"></div>
+  </div>
+
     </div>
   </nav>
 </header>
@@ -1151,5 +1188,75 @@
   }
 </script>
 
+<script>
+(function(){
+  var burger = document.querySelector('.burger');
+  var panel = document.querySelector('.mobile-panel');
+  var overlay = document.querySelector('.mobile-overlay');
+  var panelBody = document.querySelector('.mobile-panel-body');
+  var closeBtn = document.querySelector('.mobile-panel-close');
+  if(!burger || !panel || !panelBody) return;
+
+  // Build mobile links from the existing desktop nav so every page works automatically
+  var navItems = document.querySelectorAll('.nav-links > li');
+  navItems.forEach(function(li){
+    var topLink = li.querySelector('a.top-link');
+    if(!topLink) return;
+    var a = document.createElement('a');
+    a.href = topLink.getAttribute('href');
+    a.className = 'mp-link';
+    a.textContent = topLink.textContent.trim();
+    panelBody.appendChild(a);
+
+    var mega = li.querySelector('.mega');
+    if(mega){
+      var sub = document.createElement('div');
+      sub.className = 'mp-sub';
+      mega.querySelectorAll('.mega-col-title, .mega-link').forEach(function(el){
+        if(el.classList.contains('mega-col-title')){
+          var t = document.createElement('div');
+          t.className = 'mp-group-title';
+          t.textContent = el.textContent.trim();
+          sub.appendChild(t);
+        } else {
+          var link = document.createElement('a');
+          link.href = el.getAttribute('href');
+          link.className = 'mp-link';
+          link.textContent = el.textContent.trim();
+          sub.appendChild(link);
+        }
+      });
+      panelBody.appendChild(sub);
+    }
+  });
+
+  // Clone Contact / Get a Free Quote buttons
+  var ctaWrap = document.createElement('div');
+  ctaWrap.className = 'mp-cta';
+  document.querySelectorAll('.nav-cta > a').forEach(function(a){
+    ctaWrap.appendChild(a.cloneNode(true));
+  });
+  panelBody.appendChild(ctaWrap);
+
+  function openPanel(){
+    panel.classList.add('open');
+    overlay.classList.add('open');
+    document.body.classList.add('no-scroll');
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+  }
+
+  burger.addEventListener('click', openPanel);
+  overlay.addEventListener('click', closePanel);
+  if(closeBtn) closeBtn.addEventListener('click', closePanel);
+  panelBody.addEventListener('click', function(e){
+    if(e.target.tagName === 'A') closePanel();
+  });
+})();
+
+</script>
 </body>
 </html>
