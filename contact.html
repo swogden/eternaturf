@@ -366,7 +366,13 @@
   }
   .svc-card:hover .svc-link{opacity:1;transform:translateY(0);}
   @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:600px){.svc-grid{grid-template-columns:1fr;}}
+  @media(max-width:600px){
+    .svc-grid{grid-template-columns:1fr;}
+    .svc-card{min-height:0;padding:22px 20px;}
+    .svc-name{margin-top:14px;font-size:19px;}
+    .svc-desc{margin-top:6px;}
+    .svc-link{margin-top:14px;opacity:1;transform:none;}
+  }
 
   /* ---------- why / light section ---------- */
   .on-light{background:var(--fog);color:var(--ink);}
@@ -376,10 +382,16 @@
   .why-item h4{font-size:19px;margin-top:14px;}
   .why-item p{font-size:14.5px;color:#4A4E43;margin-top:10px;line-height:1.65;}
   @media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:560px){.why-grid{grid-template-columns:1fr;}}
+  @media(max-width:560px){
+    .why-grid{grid-template-columns:1fr;margin-top:28px;gap:22px;}
+    .why-item{padding-top:14px;}
+    .why-item h4{margin-top:8px;font-size:17px;}
+    .why-item p{margin-top:6px;}
+  }
 
   /* ---------- process ---------- */
   .process-list{margin-top:60px;border-top:1px solid var(--line);}
+  @media(max-width:720px){.process-list{margin-top:32px;}}
   .process-row{
     display:grid;grid-template-columns:90px 1fr 1.2fr;gap:32px;
     padding:38px 0;border-bottom:1px solid var(--line);align-items:start;
@@ -387,7 +399,11 @@
   .process-row .p-num{font-family:var(--mono);font-size:15px;color:var(--acid);}
   .process-row h4{font-size:24px;}
   .process-row p{color:var(--steel);font-size:15px;max-width:480px;line-height:1.7;}
-  @media(max-width:720px){.process-row{grid-template-columns:1fr;gap:10px;}}
+  @media(max-width:720px){
+    .process-row{grid-template-columns:1fr;gap:6px;padding:22px 0;}
+    .process-row h4{font-size:19px;}
+    .process-row p{font-size:14px;line-height:1.55;}
+  }
 
   /* ---------- geo / signature section ---------- */
   .geo-section{background:var(--charcoal-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
