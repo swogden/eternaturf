@@ -565,6 +565,81 @@
     html{scroll-behavior:auto;}
   }
 
+  /* ---------- hero quick-quote form ---------- */
+  .hero-layout{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:56px;align-items:end;}
+  .hero-layout .hero-sub{max-width:520px;}
+  .qq{position:relative;background:rgba(10,11,9,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(198,255,61,.28);padding:26px 26px 22px;
+    clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%);
+    opacity:0;animation:fade-up .8s ease forwards;animation-delay:.45s;box-shadow:0 30px 80px -30px rgba(0,0,0,.8);}
+  .qq::before{content:"";position:absolute;top:0;left:0;width:64px;height:2px;background:var(--acid);}
+  .qq-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--acid);margin-bottom:10px;}
+  .qq-top .live{display:inline-flex;align-items:center;gap:7px;color:var(--fog-2);}
+  .qq-top .live i{width:7px;height:7px;border-radius:50%;background:var(--acid);box-shadow:0 0 0 0 rgba(198,255,61,.7);animation:qq-pulse 2s infinite;}
+  @keyframes qq-pulse{70%{box-shadow:0 0 0 8px rgba(198,255,61,0);}100%{box-shadow:0 0 0 0 rgba(198,255,61,0);}}
+  .qq h2{font-size:clamp(26px,2.3vw,32px);line-height:1.02;margin-bottom:6px;}
+  .qq h2 em{font-style:normal;color:var(--acid);}
+  .qq-sub{font-size:13.5px;color:var(--steel);margin-bottom:16px;line-height:1.5;}
+  .qq-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .qq-f{position:relative;margin-bottom:10px;}
+  .qq-f input,.qq-f select{width:100%;height:48px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:#fff;
+    font-family:var(--body);font-size:15px;padding:18px 14px 4px;outline:none;border-radius:0;transition:border-color .2s, background .2s;}
+  .qq-f select{appearance:none;-webkit-appearance:none;padding-top:18px;cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,var(--acid) 50%),linear-gradient(135deg,var(--acid) 50%,transparent 50%);
+    background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px;background-repeat:no-repeat;}
+  .qq-f select option{background:#14160F;color:#fff;}
+  .qq-f label{position:absolute;left:14px;top:15px;font-size:14px;color:var(--steel);pointer-events:none;transition:all .16s ease;}
+  .qq-f input:focus,.qq-f select:focus{border-color:var(--acid);background:rgba(198,255,61,.05);}
+  .qq-f input:focus + label,.qq-f input:not(:placeholder-shown) + label,.qq-f select:focus + label,.qq-f select.filled + label{
+    top:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--acid);}
+  .qq-f input:user-invalid{border-color:#ff6b5b;}
+  .qq-consent{display:flex;gap:9px;align-items:flex-start;font-size:11px;line-height:1.45;color:var(--steel);margin:4px 0 14px;}
+  .qq-consent input{accent-color:var(--acid);margin-top:2px;flex:none;}
+  .qq .btn{width:100%;justify-content:center;padding:16px 24px;font-size:13px;}
+  .qq-trust{display:flex;justify-content:space-between;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--fog-2);text-transform:uppercase;flex-wrap:wrap;}
+  .qq-trust b{color:var(--acid);font-weight:500;}
+  .qq-done{display:none;text-align:center;padding:30px 6px 18px;}
+  .qq.sent form{display:none;} .qq.sent .qq-done{display:block;}
+  .qq-done .mk{width:54px;height:54px;margin:0 auto 16px;background:var(--acid);color:var(--black);display:grid;place-items:center;font-size:26px;
+    clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);}
+  .qq-done h3{font-family:var(--display);font-size:26px;margin-bottom:8px;}
+  .qq-done p{color:var(--steel);font-size:14px;margin-bottom:18px;}
+  .qq-done a{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--acid);text-transform:uppercase;border-bottom:1px solid rgba(198,255,61,.4);}
+  .hero:has(.hero-layout){align-items:center;min-height:calc(100vh - 126px);}
+  .hero-layout ~ *, .hero .hero-inner:has(.hero-layout){padding-top:48px;padding-bottom:64px;}
+  .hero-layout h1{font-size:clamp(38px,4.9vw,70px);}
+  .hero-layout .hero-sub{margin-top:20px;}
+  .hero-layout .hero-ctas{margin-top:28px;}
+  .hero-layout .hero-real{margin-top:18px;}
+  .qq-top .short{display:none;}
+  @media(max-width:640px){
+    .hero-layout .hero-real{display:none;}
+    .hero:has(.hero-layout) .hero-photo-overlay{background:linear-gradient(0deg,rgba(6,7,5,.95) 20%,rgba(6,7,5,.72) 60%,rgba(6,7,5,.55));}
+    .qq-top .long{display:none;} .qq-top .short{display:inline;}
+  }
+  /* dots + caption move off the form */
+  .hero-dots{right:auto;left:32px;bottom:26px;flex-direction:row;}
+  @media(max-width:1100px){
+    .hero-layout{grid-template-columns:1fr;gap:34px;}
+    .qq{max-width:560px;}
+    .hero{min-height:0;}
+  }
+  @media(max-width:640px){
+    .hero-inner{padding-top:84px !important;padding-bottom:36px !important;}
+    .hero-layout .hero-ctas{display:none;}
+    .hero-layout .hero-sub{font-size:16px;margin-top:16px;}
+    .qq{padding:22px 18px 18px;}
+    .qq-row{grid-template-columns:1fr;gap:0;}
+    .qq-trust{font-size:9px;}
+  }
+  /* sticky quote bar on phones once the form scrolls away */
+  .qq-bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(10,11,9,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s ease;}
+  .qq-bar .btn{flex:1;justify-content:center;padding:14px 10px;}
+  .qq-bar.show{transform:none;}
+  @media(max-width:768px){.qq-bar{display:flex;}}
+
   /* ---------- photo-forward additions ---------- */
   .hero-inner{padding-left:32px;padding-right:32px;}
   @media(max-width:640px){.hero-inner{padding-left:20px;padding-right:20px;}}
@@ -705,7 +780,7 @@
     </ul>
     <div class="nav-cta">
       <a href="contact.html" class="btn btn-outline">Contact</a>
-      <a href="contact.html" class="btn btn-acid">Get a Free Quote</a>
+      <a href="#quick-quote" class="btn btn-acid">Get a Free Quote</a>
       <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 
     </div>
@@ -725,14 +800,64 @@
   <div class="hero-corner"></div>
   <div class="hero-dots" id="heroDots"></div>
   <div class="wrap hero-inner">
-    <div class="eyebrow">SERVING KY · IN · OH · FL</div>
-    <h1><span class="line"><span>The future of</span></span><span class="line"><span>outdoor living, <em>built to last.</em></span></span></h1>
-    <p class="hero-sub">EternaTurf installs premium artificial turf, hardscaping, and outdoor surfacing for homes and businesses — engineered for the way you actually use your property, backed by a licensed, bonded, veteran-owned team.</p>
-    <div class="hero-ctas">
-      <a href="contact.html" class="btn btn-acid">Get a Free Quote</a>
-      <a href="projects.html" class="btn btn-outline">See Our Work</a>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <div class="eyebrow">SERVING KY · IN · OH · FL</div>
+        <h1><span class="line"><span>The future of</span></span><span class="line"><span>outdoor living, <em>built to last.</em></span></span></h1>
+        <p class="hero-sub">Premium artificial turf, putting greens, and outdoor surfacing for homes and businesses, installed by a licensed, bonded, veteran-owned team.</p>
+        <div class="hero-ctas">
+          <a href="projects.html" class="btn btn-outline">See Our Work</a>
+          <a href="tel:8126356520" class="btn btn-outline">Call (812) 635-6520</a>
+        </div>
+        <div class="hero-real"><i></i> EVERY PROJECT PHOTO IS A REAL ETERNATURF INSTALL</div>
+      </div>
+
+      <!-- =====================================================================
+           QUICK QUOTE FORM
+           When the GoHighLevel form is ready, replace everything inside
+           <div class="qq-slot"> ... </div> with the GoHighLevel embed code
+           (usually an <iframe> plus a <script>). The dark card around it stays.
+           ===================================================================== -->
+      <div class="qq" id="quick-quote">
+        <div class="qq-top"><span>// FREE QUOTE</span><span class="live"><i></i><span class="long">REPLIES WITHIN 1 BUSINESS DAY</span><span class="short">FAST REPLY</span></span></div>
+        <h2>Get your <em>free quote.</em></h2>
+        <p class="qq-sub">Takes about 30 seconds. We'll follow up to schedule a free on-site consultation.</p>
+        <div class="qq-slot">
+          <form id="qqForm" novalidate>
+            <div class="qq-row">
+              <div class="qq-f"><input id="qqName" name="name" type="text" autocomplete="name" placeholder=" " required><label for="qqName">Your name*</label></div>
+              <div class="qq-f"><input id="qqPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required><label for="qqPhone">Phone*</label></div>
+            </div>
+            <div class="qq-f"><input id="qqEmail" name="email" type="email" autocomplete="email" placeholder=" " required><label for="qqEmail">Email*</label></div>
+            <div class="qq-row">
+              <div class="qq-f">
+                <select id="qqType" name="projectType" required>
+                  <option value="" selected disabled hidden></option>
+                  <option>Landscape / lawn turf</option>
+                  <option>Pet turf</option>
+                  <option>Putting green</option>
+                  <option>Pool surround</option>
+                  <option>Sports / commercial</option>
+                  <option>Playground / surfacing</option>
+                  <option>Hardscaping</option>
+                  <option>Not sure yet</option>
+                </select><label for="qqType">Project type*</label>
+              </div>
+              <div class="qq-f"><input id="qqZip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10" placeholder=" " required><label for="qqZip">ZIP code*</label></div>
+            </div>
+            <label class="qq-consent"><input type="checkbox" name="smsConsent"> I agree to receive calls and texts from EternaTurf about my project. Msg &amp; data rates may apply. Reply STOP to opt out.</label>
+            <button type="submit" class="btn btn-acid">Get My Free Quote →</button>
+          </form>
+          <div class="qq-done" role="status" aria-live="polite">
+            <div class="mk">✓</div>
+            <h3>Request received.</h3>
+            <p>Thanks! A local EternaTurf team member will reach out within one business day.</p>
+            <a href="projects.html">Browse our projects while you wait →</a>
+          </div>
+        </div>
+        <div class="qq-trust"><span><b>5.0★</b> 103 Google reviews</span><span>Free on-site consult</span><span><b>15–25 yr</b> warranty</span></div>
+      </div>
     </div>
-    <div class="hero-real"><i></i> EVERY PROJECT PHOTO IS A REAL ETERNATURF INSTALL</div>
   </div>
   <div class="hero-caption" id="heroCaption"><b>REAL INSTALL</b> · Pavilion backyard lawn · Greater Louisville, KY</div>
 </section>
@@ -980,7 +1105,7 @@
     <div class="eyebrow" style="justify-content:center;">READY WHEN YOU ARE</div>
     <h2>Let's build your outdoor space.</h2>
     <p>Backyard, putting green, pet area, playground, sports facility, or commercial property — tell us what you're working with and we'll take it from there.</p>
-    <div class="hero-ctas"><a href="contact.html" class="btn btn-acid">Get a Free Quote</a><a href="tel:8126356520" class="btn btn-outline">Call (812) 635-6520</a></div>
+    <div class="hero-ctas"><a href="#quick-quote" class="btn btn-acid">Get a Free Quote</a><a href="tel:8126356520" class="btn btn-outline">Call (812) 635-6520</a></div>
   </div>
 </section>
 
@@ -1277,6 +1402,26 @@
   });
 })();
 
+</script>
+<div class="qq-bar" id="qqBar"><a class="btn btn-acid" href="#quick-quote">Get a Free Quote</a><a class="btn btn-outline" href="tel:8126356520">Call</a></div>
+<script>
+/* Quick-quote mockup behavior. Remove once the GoHighLevel embed replaces the form. */
+(function(){
+  var card=document.getElementById('quick-quote'), f=document.getElementById('qqForm'), bar=document.getElementById('qqBar');
+  if(f){
+    var sel=f.querySelector('select');
+    sel.addEventListener('change',function(){sel.classList.toggle('filled',!!sel.value);});
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!f.checkValidity()){f.reportValidity();return;}
+      card.classList.add('sent');
+    });
+  }
+  if(card&&bar&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){bar.classList.toggle('show',!e.isIntersecting&&e.boundingClientRect.top<0);});}).observe(card);
+    bar.querySelector('a').addEventListener('click',function(e){e.preventDefault();card.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){document.getElementById('qqName').focus({preventScroll:true});},500);});
+  }
+})();
 </script>
 <script src="js/projects-data.js"></script>
 <script src="js/et-gallery.js"></script>
