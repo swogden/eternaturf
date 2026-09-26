@@ -832,6 +832,23 @@
   }
 
 </style>
+<style>
+  .et-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:40px;}
+  .et-head .section-sub{margin-top:14px;}
+  .link-arrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acid);display:inline-flex;gap:10px;align-items:center;border-bottom:1px solid rgba(198,255,61,.35);padding-bottom:6px;}
+  .link-arrow:hover{border-color:var(--acid);}
+  .et-gal-sec{background:var(--black);border-top:1px solid var(--line);}
+  .et-ba-sec{background:var(--charcoal-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .subhero.et-real .subhero-photo{opacity:1 !important;}
+  .subhero.et-real .subhero-overlay{background:
+      linear-gradient(0deg, rgba(6,7,5,0.94) 6%, rgba(6,7,5,0.5) 48%, rgba(6,7,5,0.22) 100%),
+      linear-gradient(90deg, rgba(6,7,5,0.7) 0%, rgba(6,7,5,0.05) 62%);}
+  .subhero .et-real-tag{position:absolute;right:32px;bottom:24px;z-index:3;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:rgba(255,255,255,.8);}
+  .subhero .et-real-tag b{color:var(--acid);font-weight:500;}
+  @media(max-width:768px){.subhero .et-real-tag{display:none;}}
+</style>
+<link rel="stylesheet" href="../css/et-gallery.css">
+<style id="et-mobile-fix">@media(max-width:600px){.svc-index-grid{grid-template-columns:1fr !important;}}</style>
 </head>
 <body>
   <div class="mobile-overlay"></div>
@@ -870,7 +887,7 @@
           </div>
         </div>
       </li>
-      <li><a class="top-link" href="#">Projects</a></li>
+      <li><a class="top-link" href="../projects.html">Projects</a></li>
       <li><a class="top-link" href="index.html">Locations <span class="caret"></span></a>
         <div class="mega two-col">
           <div>
@@ -906,10 +923,11 @@
 </header>
 
 
-<section class="subhero" style="min-height:52vh;">
-  <img class="subhero-photo" src="../images/hardscaping-outdoor-living-inspiration.jpg" alt="Hardscaped patio with fire pit and seating wall" style="opacity:.5;">
+<section class="subhero et-real" style="min-height:52vh;">
+  <img class="subhero-photo" src="../images/projects/herringbone-patio-lawn.jpg" alt="Circular artificial lawn wrapping a herringbone brick patio" style="object-position:center 60%;" fetchpriority="high">
   <div class="subhero-overlay"></div>
   <div class="subhero-grid"></div>
+  <div class="et-real-tag"><b>REAL INSTALL</b> · Herringbone Patio Lawn · Greater Louisville, KY</div>
   <div class="wrap subhero-inner">
     <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span class="current">Locations</span><span class="sep">/</span><span class="current">Bardstown, KY</span></div>
     <div class="loc-badge" style="color:var(--steel);border-color:var(--line);"><span class="dot" style="background:transparent;border:1.5px solid var(--steel);"></span>SERVICE AREA — NOT A PHYSICAL OFFICE</div>
@@ -985,6 +1003,13 @@
   </div>
 </section>
 
+<section class="pad et-gal-sec">
+  <div class="wrap">
+    <div class="et-head" data-reveal><div><div class="eyebrow">KENTUCKY WORK</div><h2 class="section-title">Recent Kentucky installs.</h2><p class="section-sub">Work from our Louisville-area crew, which also serves Bardstown.</p></div><a class="link-arrow" href="../projects.html">View all projects →</a></div>
+    <div data-reveal data-et-gallery data-layout="rail" data-region="louisville" data-limit="10"></div>
+  </div>
+</section>
+
 <section class="pad final-cta">
   <div class="wrap" data-reveal>
     <div class="eyebrow" style="justify-content:center;">READY WHEN YOU ARE</div>
@@ -1021,7 +1046,7 @@
       <div class="foot-col">
         <h5>Company</h5>
         <a href="../about-us.html">About Us</a>
-        <a href="#">Projects</a>
+        <a href="../projects.html">Projects</a>
         <a href="#">Turf Talk</a>
         <a href="../faq.html">FAQ</a>
         <a href="../contact.html">Contact</a>
@@ -1157,5 +1182,7 @@
 })();
 
 </script>
+<script src="../js/projects-data.js"></script>
+<script src="../js/et-gallery.js"></script>
 </body>
 </html>

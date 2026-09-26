@@ -564,7 +564,65 @@
     [data-reveal]{opacity:1;transform:none;transition:none;}
     html{scroll-behavior:auto;}
   }
+
+  /* ---------- photo-forward additions ---------- */
+  .hero-inner{padding-left:32px;padding-right:32px;}
+  @media(max-width:640px){.hero-inner{padding-left:20px;padding-right:20px;}}
+  .hero-photo-overlay{
+    background:
+      linear-gradient(0deg, rgba(6,7,5,0.92) 2%, rgba(6,7,5,0.45) 36%, rgba(6,7,5,0.06) 64%, rgba(6,7,5,0.32) 100%),
+      linear-gradient(90deg, rgba(6,7,5,0.6) 0%, rgba(6,7,5,0.0) 52%);
+  }
+  .hero-caption{color:rgba(255,255,255,0.8);}
+  .hero-caption b{color:var(--acid);font-weight:500;}
+  .hero-real{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#fff;
+    background:rgba(6,7,5,.55);border:1px solid var(--line);padding:8px 12px;margin-top:22px;backdrop-filter:blur(6px);
+    opacity:0;animation:fade-up .8s ease forwards;animation-delay:.85s;}
+  .hero-real i{width:7px;height:7px;background:var(--acid);display:inline-block;box-shadow:0 0 10px var(--acid);flex:none;}
+
+  /* service photo cards */
+  .svc-grid.photo{gap:14px;background:none;border:0;}
+  .svc-grid.photo .svc-card{padding:0;min-height:0;background:var(--charcoal-2);border:1px solid var(--line);overflow:hidden;
+    clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%);justify-content:flex-start;}
+  .svc-grid.photo .svc-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px -20px rgba(0,0,0,.6);border-color:var(--acid);}
+  .svc-ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000;}
+  .svc-ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.16,1,.3,1);}
+  .svc-card:hover .svc-ph img{transform:scale(1.06);}
+  .svc-ph .svc-num{position:absolute;top:12px;left:12px;background:rgba(6,7,5,.72);color:var(--acid);padding:5px 8px;border:1px solid var(--line);}
+  .svc-ph .real{position:absolute;right:10px;bottom:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:#fff;background:rgba(6,7,5,.72);padding:4px 7px;}
+  .svc-ph .real::before{content:"";display:inline-block;width:6px;height:6px;background:var(--acid);margin-right:6px;vertical-align:1px;}
+  .svc-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1;}
+  .svc-grid.photo .svc-name{margin-top:0;}
+  .svc-grid.photo .svc-link{opacity:1;transform:none;margin-top:auto;padding-top:16px;}
+  @media(max-width:600px){.svc-grid.photo .svc-card{padding:0;}.svc-body{padding:16px 16px 18px;}}
+
+  /* section heads with right-side link */
+  .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:44px;}
+  .head-row .section-sub{margin-top:14px;}
+  .link-arrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acid);display:inline-flex;gap:10px;align-items:center;border-bottom:1px solid rgba(198,255,61,.35);padding-bottom:6px;}
+  .link-arrow:hover{border-color:var(--acid);}
+  .ba-section{background:var(--charcoal-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+  /* process photos */
+  .proc-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px;}
+  .proc-photos figure{position:relative;margin:0;overflow:hidden;aspect-ratio:4/5;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);}
+  .proc-photos img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.16,1,.3,1);}
+  .proc-photos figure:hover img{transform:scale(1.05);}
+  .proc-photos figcaption{position:absolute;inset:auto 0 0 0;padding:34px 14px 12px;background:linear-gradient(0deg,rgba(6,7,5,.9),transparent);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;display:flex;justify-content:space-between;}
+  .proc-photos figcaption b{color:var(--acid);font-weight:500;}
+  .proc-photos figure:last-child{outline:1px solid var(--acid);outline-offset:-1px;}
+  .proc-note{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--steel);margin-top:14px;text-transform:uppercase;}
+  @media(max-width:800px){.proc-photos{grid-template-columns:1fr 1fr;gap:8px;}}
+
+  /* final CTA photo background */
+  .final-cta.has-photo{overflow:hidden;}
+  .final-cta .cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;}
+  .final-cta.has-photo::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,rgba(6,7,5,.55),rgba(6,7,5,.94) 75%);}
+  .final-cta.has-photo .wrap{position:relative;z-index:2;}
 </style>
+<link rel="stylesheet" href="css/et-gallery.css">
+<link rel="preload" as="image" href="images/projects/hero/pavilion-lawn.jpg">
 </head>
 <body>
   <div class="mobile-overlay"></div>
@@ -619,7 +677,7 @@
           </div>
         </div>
       </li>
-      <li><a class="top-link" href="#">Projects</a></li>
+      <li><a class="top-link" href="projects.html">Projects</a></li>
       <li><a class="top-link" href="national-locations/index.html">Locations <span class="caret"></span></a>
         <div class="mega two-col">
           <div>
@@ -655,12 +713,13 @@
 </header>
 
 <section class="hero">
-  <img class="hero-photo" data-caption="Landscape turf &amp; outdoor living inspiration" src="images/eternaturf-installed-backyard-with-artif.jpg" alt="Backyard with artificial landscape turf, pool, and outdoor living space">
-  <img class="hero-photo" data-caption="Backyard putting green inspiration" src="images/backyard-putting-green-inspiration.jpg" alt="Backyard artificial putting green">
-  <img class="hero-photo" data-caption="Hardscaping &amp; outdoor living inspiration" src="images/hardscaping-outdoor-living-inspiration.jpg" alt="Hardscaped patio with fire pit, seating wall, and putting green">
-  <img class="hero-photo" data-caption="Sports turf inspiration" src="images/sports-turf-inspiration.jpg" alt="Artificial sports turf field">
-  <img class="hero-photo" data-caption="Playground surfacing inspiration" src="images/playground-surfacing-inspiration.jpg" alt="Playground with rubber mulch surfacing">
-  <img class="hero-photo" data-caption="Landscape turf inspiration" src="images/close-up-of-premium-artificial-landscape.jpg" alt="Close-up of premium artificial landscape turf">
+  <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Pavilion backyard lawn · Greater Louisville, KY" src="images/projects/hero/pavilion-lawn.jpg" alt="Artificial turf lawn curving around mature trees beside a white pavilion and stone patio" style="object-position:center 58%" fetchpriority="high">
+  <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Tropical putting course · Sarasota Area, FL" src="images/projects/hero/tropical-putting-course.jpg" alt="Custom backyard putting green with rock border and tropical landscaping" style="object-position:center 60%">
+  <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Striped pool lawn · Southern Indiana" src="images/projects/hero/striped-pool-lawn.jpg" alt="Striped artificial grass lawn leading to an in-ground pool" style="object-position:center 62%">
+  <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Pondside putting green · Toledo Area, OH" src="images/projects/hero/pond-putting-green.jpg" alt="Artificial putting green beside a pond and white gazebo" style="object-position:center 60%">
+  <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Oak tree lawn · Tampa Bay, FL" src="images/projects/hero/oak-tree-lawn.jpg" alt="Large artificial lawn with a mature oak tree and white vinyl fence" style="object-position:center 62%">
+  <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Stone-bordered putting green · Greater Louisville, KY" src="images/projects/hero/stone-border-putting-green.jpg" alt="Backyard putting green framed by a curved stone border" style="object-position:center 60%">
+  <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Sand bunker green · Tampa Bay, FL" src="images/projects/hero/sand-bunker-green.jpg" alt="Backyard putting green with sand bunker and white vinyl fence" style="object-position:center 62%">
   <div class="hero-photo-overlay"></div>
   <div class="hero-grid" id="heroGrid"></div>
   <div class="hero-corner"></div>
@@ -671,10 +730,11 @@
     <p class="hero-sub">EternaTurf installs premium artificial turf, hardscaping, and outdoor surfacing for homes and businesses — engineered for the way you actually use your property, backed by a licensed, bonded, veteran-owned team.</p>
     <div class="hero-ctas">
       <a href="contact.html" class="btn btn-acid">Get a Free Quote</a>
-      <a href="#services" class="btn btn-outline">Explore Our Services</a>
+      <a href="projects.html" class="btn btn-outline">See Our Work</a>
     </div>
+    <div class="hero-real"><i></i> EVERY PROJECT PHOTO IS A REAL ETERNATURF INSTALL</div>
   </div>
-  <div class="hero-caption" id="heroCaption">Landscape turf &amp; outdoor living inspiration</div>
+  <div class="hero-caption" id="heroCaption"><b>REAL INSTALL</b> · Pavilion backyard lawn · Greater Louisville, KY</div>
 </section>
 
 <div class="trust-strip">
@@ -687,6 +747,8 @@
   </div>
 </div>
 
+<div data-et-film data-ids="stone-border-putting-green,lakeside-fire-pit,striped-lawn,palm-bed-lawn,fire-pit-island,pavilion-lawn,paver-path-putting-green,herringbone-patio-lawn,front-yard-edging,poolside-putting-green,bunker-green,new-build-backyard,fire-pit-retreat,indoor-field,screened-pool-green,curved-ranch-lawn,waterfront-yard,pond-putting-green" aria-label="Recent EternaTurf installs"></div>
+
 <section class="pad" id="services">
   <div class="wrap">
     <div class="services-head" data-reveal>
@@ -696,17 +758,45 @@
       </div>
       <p class="section-sub">Started as an artificial turf specialist in 2018, now a full outdoor living partner. One team, one point of contact, from design through final walkthrough.</p>
     </div>
-    <div class="svc-grid" data-reveal>
-      <div class="svc-card"><div class="svc-num">01</div><div><div class="svc-name">Landscape Turf</div><div class="svc-desc">A lawn that stays green year-round — no mowing, no watering, no brown patches.</div></div><div class="svc-link">View Service →</div></div>
-      <div class="svc-card"><div class="svc-num">02</div><div><div class="svc-name">Pet Turf</div><div class="svc-desc">A clean, safe yard built for dogs — no mud, no dead spots, easy to hose down.</div></div><div class="svc-link">View Service →</div></div>
-      <div class="svc-card"><div class="svc-num">03</div><div><div class="svc-name">Sports Turf</div><div class="svc-desc">High-performance turf built for real athletes, real games, and real weather.</div></div><div class="svc-link">View Service →</div></div>
-      <div class="svc-card"><div class="svc-num">04</div><div><div class="svc-name">Putting Greens</div><div class="svc-desc">Custom backyard, office, or commercial greens built to true, consistent rolls.</div></div><div class="svc-link">View Service →</div></div>
-      <div class="svc-card"><div class="svc-num">05</div><div><div class="svc-name">Playground Turf</div><div class="svc-desc">Soft, safe, ASTM-aware surfacing that looks sharp in every season.</div></div><div class="svc-link">View Service →</div></div>
-      <div class="svc-card"><div class="svc-num">06</div><div><div class="svc-name">Custom Turf Projects</div><div class="svc-desc">Odd angles, rooftops, courtyards — spaces that don't fit a standard install.</div></div><div class="svc-link">View Service →</div></div>
-      <div class="svc-card"><div class="svc-num">07</div><div><div class="svc-name">Hardscaping</div><div class="svc-desc">Paver patios, retaining walls, and fire pits, built by a decade-plus crew.</div></div><div class="svc-link">View Service →</div></div>
-      <div class="svc-card"><div class="svc-num">08</div><div><div class="svc-name">Rubber Mulch &amp; Surfacing</div><div class="svc-desc">ASTM-tested rubber mulch and poured-in-place surfacing for play and pool decks.</div></div><div class="svc-link">View Service →</div></div>
-      <div class="svc-card"><div class="svc-num">09</div><div><div class="svc-name">Playground Equipment &amp; Shade</div><div class="svc-desc">Commercial play equipment and hurricane-rated shade structures, installed together.</div></div><div class="svc-link">View Service →</div></div>
+    <div class="svc-grid photo" data-reveal>
+      <a class="svc-card" href="services/artificial-landscape-turf.html"><div class="svc-ph"><img src="images/projects/thumb/hydrangea-lawn.jpg" alt="Artificial lawn with hydrangeas and flagstone patio" loading="lazy"><span class="real">ETERNATURF INSTALL</span><span class="svc-num">01</span></div><div class="svc-body"><div class="svc-name">Landscape Turf</div><div class="svc-desc">A lawn that stays green year-round — no mowing, no watering, no brown patches.</div><div class="svc-link">View Service →</div></div></a>
+      <a class="svc-card" href="services/artificial-pet-turf.html"><div class="svc-ph"><img src="images/dog-playing-on-eternaturf-artificial-pet.jpg" alt="Dog playing on artificial pet turf" loading="lazy"><span class="svc-num">02</span></div><div class="svc-body"><div class="svc-name">Pet Turf</div><div class="svc-desc">A clean, safe yard built for dogs — no mud, no dead spots, easy to hose down.</div><div class="svc-link">View Service →</div></div></a>
+      <a class="svc-card" href="services/artificial-sports-turf.html"><div class="svc-ph"><img src="images/projects/thumb/indoor-field.jpg" alt="Indoor sports facility artificial turf field" loading="lazy"><span class="real">ETERNATURF INSTALL</span><span class="svc-num">03</span></div><div class="svc-body"><div class="svc-name">Sports Turf</div><div class="svc-desc">High-performance turf built for real athletes, real games, and real weather.</div><div class="svc-link">View Service →</div></div></a>
+      <a class="svc-card" href="services/artificial-putting-greens.html"><div class="svc-ph"><img src="images/projects/thumb/stone-border-putting-green.jpg" alt="Backyard putting green with stone border" loading="lazy"><span class="real">ETERNATURF INSTALL</span><span class="svc-num">04</span></div><div class="svc-body"><div class="svc-name">Putting Greens</div><div class="svc-desc">Custom backyard, office, or commercial greens built to true, consistent rolls.</div><div class="svc-link">View Service →</div></div></a>
+      <a class="svc-card" href="services/artificial-playground-turf.html"><div class="svc-ph"><img src="images/playground-surfacing-inspiration.jpg" alt="Playground with safety surfacing" loading="lazy"><span class="svc-num">05</span></div><div class="svc-body"><div class="svc-name">Playground Turf</div><div class="svc-desc">Soft, safe, ASTM-aware surfacing that looks sharp in every season.</div><div class="svc-link">View Service →</div></div></a>
+      <a class="svc-card" href="services/custom-turf-projects.html"><div class="svc-ph"><img src="images/projects/thumb/fire-pit-island.jpg" alt="Artificial turf island with fire pit surrounded by a pond" loading="lazy"><span class="real">ETERNATURF INSTALL</span><span class="svc-num">06</span></div><div class="svc-body"><div class="svc-name">Custom Turf Projects</div><div class="svc-desc">Odd angles, rooftops, courtyards — spaces that don't fit a standard install.</div><div class="svc-link">View Service →</div></div></a>
+      <a class="svc-card" href="services/hardscaping.html"><div class="svc-ph"><img src="images/projects/thumb/fire-pit-retreat.jpg" alt="Outdoor living space with fire pit and stepping stones" loading="lazy"><span class="real">ETERNATURF INSTALL</span><span class="svc-num">07</span></div><div class="svc-body"><div class="svc-name">Hardscaping</div><div class="svc-desc">Paver patios, retaining walls, and fire pits, built by a decade-plus crew.</div><div class="svc-link">View Service →</div></div></a>
+      <a class="svc-card" href="services/rubber-mulch.html"><div class="svc-ph"><img src="images/playground-surfacing-inspiration.jpg" alt="Rubber mulch playground surfacing" loading="lazy"><span class="svc-num">08</span></div><div class="svc-body"><div class="svc-name">Rubber Mulch &amp; Surfacing</div><div class="svc-desc">ASTM-tested rubber mulch and poured-in-place surfacing for play and pool decks.</div><div class="svc-link">View Service →</div></div></a>
+      <a class="svc-card" href="services/playground-equipment.html"><div class="svc-ph"><img src="images/hardscaping-outdoor-living-inspiration.jpg" alt="Outdoor living space" loading="lazy"><span class="svc-num">09</span></div><div class="svc-body"><div class="svc-name">Playground Equipment &amp; Shade</div><div class="svc-desc">Commercial play equipment and hurricane-rated shade structures, installed together.</div><div class="svc-link">View Service →</div></div></a>
     </div>
+  </div>
+</section>
+
+<section class="pad" id="recent-work">
+  <div class="wrap">
+    <div class="head-row" data-reveal>
+      <div>
+        <div class="eyebrow">RECENT WORK</div>
+        <h2 class="section-title">Real yards. Real installs. No stock photos.</h2>
+        <p class="section-sub">A few favorites from Kentucky, Indiana, Ohio, and Florida. Tap any photo to see it full size.</p>
+      </div>
+      <a class="link-arrow" href="projects.html">View all projects →</a>
+    </div>
+    <div data-reveal data-et-gallery data-layout="bento" data-ids="pavilion-lawn,paver-path-putting-green,fire-pit-island,lakeside-fire-pit,palm-bed-lawn,front-yard-edging,striped-pool-lawn,sand-bunker-green"></div>
+  </div>
+</section>
+
+<section class="pad ba-section" id="before-after">
+  <div class="wrap">
+    <div class="head-row" data-reveal>
+      <div>
+        <div class="eyebrow">BEFORE &amp; AFTER</div>
+        <h2 class="section-title">Drag the slider. See the difference.</h2>
+        <p class="section-sub">Same yard, same angle, a few days apart. Pick a project to compare.</p>
+      </div>
+      <a class="link-arrow" href="projects.html#before-after">All transformations →</a>
+    </div>
+    <div data-reveal data-et-ba data-layout="feature" data-ids="pavilion-backyard,construction-to-lawn,worn-lawn-patio,poolside-green,picket-fence,brick-ranch,ranch-curved-lawn,office-lawn,indoor-field,modern-home"></div>
   </div>
 </section>
 
@@ -753,6 +843,13 @@
         <p>A finished outdoor space designed to look sharp and hold up for years, backed by a real warranty.</p>
       </div>
     </div>
+    <div class="proc-photos" data-reveal>
+      <figure><img src="images/projects/process/1-excavation.jpg" alt="Backyard excavated down to soil before artificial turf installation" loading="lazy"><figcaption><span>Excavation</span><b>STEP 1</b></figcaption></figure>
+      <figure><img src="images/projects/process/2-layout.jpg" alt="Crew setting edging and river rock borders on a turf job" loading="lazy"><figcaption><span>Edging &amp; layout</span><b>STEP 2</b></figcaption></figure>
+      <figure><img src="images/projects/process/3-base.jpg" alt="Compacted stone base with plate compactor ready for turf" loading="lazy"><figcaption><span>Compacted base</span><b>STEP 3</b></figcaption></figure>
+      <figure><img src="images/projects/process/4-finished.jpg" alt="Finished artificial turf backyard with gravel border and picket fence" loading="lazy"><figcaption><span>Finished yard</span><b>DONE</b></figcaption></figure>
+    </div>
+    <p class="proc-note">One backyard, start to finish · Greater Louisville, KY</p>
   </div>
 </section>
 
@@ -805,6 +902,13 @@
         <div class="footprint-caption">Solid pins: EternaTurf locations. Outlined pins: communities served without a local office. Map data © OpenStreetMap contributors, © CARTO.</div>
       </div>
     </div>
+    <div class="head-row" style="margin:80px 0 26px;" data-reveal>
+      <div>
+        <div class="eyebrow">WORK BY AREA</div>
+        <h3 class="section-title" style="font-size:clamp(26px,3vw,38px);">See what we've built near you.</h3>
+      </div>
+    </div>
+    <div data-reveal data-et-regions></div>
   </div>
 </section>
 
@@ -870,7 +974,8 @@
   </div>
 </section>
 
-<section class="pad final-cta">
+<section class="pad final-cta has-photo">
+  <img class="cta-bg" src="images/projects/lakeside-fire-pit.jpg" alt="" loading="lazy" aria-hidden="true">
   <div class="wrap" data-reveal>
     <div class="eyebrow" style="justify-content:center;">READY WHEN YOU ARE</div>
     <h2>Let's build your outdoor space.</h2>
@@ -905,7 +1010,7 @@
       <div class="foot-col">
         <h5>Company</h5>
         <a href="about-us.html">About Us</a>
-        <a href="#">Projects</a>
+        <a href="projects.html">Projects</a>
         <a href="#">Turf Talk</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
@@ -970,7 +1075,7 @@
       heroIndex = i;
       heroPhotos[heroIndex].classList.add('active');
       heroDotsWrap.children[heroIndex].classList.add('active');
-      heroCaption.textContent = heroPhotos[heroIndex].getAttribute('data-caption');
+      heroCaption.innerHTML = heroPhotos[heroIndex].getAttribute('data-caption');
       playKenBurns(heroPhotos[heroIndex], heroIndex);
       clearInterval(heroTimer);
       startHeroTimer();
@@ -1173,5 +1278,7 @@
 })();
 
 </script>
+<script src="js/projects-data.js"></script>
+<script src="js/et-gallery.js"></script>
 </body>
 </html>

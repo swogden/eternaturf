@@ -3,14 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artificial Turf in Lexington, KY | EternaTurf</title>
-<meta name="description" content="EternaTurf installs premium artificial turf, hardscaping, and outdoor surfacing across greater Lexington, KY. Licensed, bonded, veteran-owned.">
-<link rel="icon" href="../images/favicon.png">
+<title>Projects &amp; Gallery | EternaTurf Artificial Turf Installations</title>
+<meta name="description" content="Browse real EternaTurf artificial turf installs: backyard lawns, putting greens, pool surrounds, and commercial fields across Louisville, Southern Indiana, Toledo, Sarasota, and Tampa. Before and after photos included.">
+<link rel="icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
 <style>
 
@@ -745,110 +743,50 @@
     border:1px solid var(--line);padding:9px 15px;display:flex;align-items:center;gap:8px;
   }
   .loc-chip .d{width:6px;height:6px;border-radius:50%;background:var(--acid);}
-  .geo-panel{
-    background:var(--black);
-    border:1px solid var(--line);
-    padding:20px;
-    position:relative;
-    clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,0 100%);
-  }
-  .geo-panel-head{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--steel);padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:18px;}
-  .footprint-map{
-    width:100%;height:460px;
-    opacity:0;transition:opacity .8s ease;
-  }
-  .footprint-map.in{opacity:1;}
-  .footprint-caption{font-family:var(--mono);font-size:11px;color:var(--steel);margin-top:16px;line-height:1.8;}
 
-  /* Leaflet dark theme overrides */
-  .leaflet-container{background:#14160F;font-family:var(--body);}
-  .map-pin{position:relative;display:flex;align-items:center;justify-content:center;}
-  .map-pin-solid{
-    width:14px;height:14px;border-radius:50%;background:var(--acid);
-    box-shadow:0 0 0 4px rgba(198,255,61,0.22);
+  /* ---------- founder profile panel ---------- */
+  .founder-panel{
+    background:var(--charcoal-2);border:1px solid var(--line);padding:32px;
+    clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%);
   }
-  .map-pin-outline{
-    width:10px;height:10px;border-radius:50%;background:rgba(154,160,152,0.25);
-    border:1.5px solid var(--steel);
-  }
-  .map-tooltip{
-    font-family:var(--mono) !important;font-size:11px !important;
-    background:var(--charcoal) !important;color:var(--fog-2) !important;
-    border:1px solid var(--line) !important;border-radius:0 !important;
-    box-shadow:none !important;padding:5px 9px !important;
-    letter-spacing:.03em;
-  }
-  .map-tooltip::before{display:none !important;}
-  .leaflet-control-zoom a{
-    background:var(--charcoal) !important;color:var(--fog-2) !important;
-    border-color:var(--line) !important;border-radius:0 !important;
-  }
-  .leaflet-control-zoom a:hover{background:var(--charcoal-2) !important;color:var(--acid) !important;}
-  .leaflet-control-attribution{
-    background:rgba(10,11,9,0.7) !important;color:var(--steel) !important;
-    font-family:var(--mono) !important;font-size:9.5px !important;
-  }
-  .leaflet-control-attribution a{color:var(--steel) !important;}
+  .founder-panel-head{font-family:var(--mono);font-size:11px;color:var(--steel);letter-spacing:.08em;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:18px;text-transform:uppercase;}
+  .founder-fact{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.08);font-size:14px;}
+  .founder-fact:last-child{border-bottom:none;}
+  .founder-fact .k{color:var(--steel);}
+  .founder-fact .v{color:var(--white);text-align:right;}
 
-
-  /* ---------- location page: address / contact panel ---------- */
-  .loc-badge{
-    display:inline-flex;align-items:center;gap:8px;
-    font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--acid);border:1px solid rgba(198,255,61,0.35);padding:7px 14px;margin-bottom:20px;
+  /* ---------- timeline ---------- */
+  .timeline{margin-top:48px;border-top:1px solid var(--line-dark);}
+  .timeline-row{
+    display:grid;grid-template-columns:120px 1fr;gap:28px;
+    padding:28px 0;border-bottom:1px solid var(--line-dark);
   }
-  .loc-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--acid);}
-
-  .contact-panel{
-    background:var(--charcoal-2);border:1px solid var(--line);padding:28px;
-    clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%);
-  }
-  .contact-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);}
-  .contact-row:last-child{border-bottom:none;}
-  .contact-icon{
-    flex-shrink:0;width:32px;height:32px;border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--mono);font-size:11px;color:var(--acid);
-  }
-  .contact-label{font-family:var(--mono);font-size:10px;color:var(--steel);letter-spacing:.08em;text-transform:uppercase;}
-  .contact-value{font-size:15px;color:var(--white);margin-top:4px;}
-  .contact-value a{color:var(--white);}
-  .contact-value a:hover{color:var(--acid);}
-
-  /* ---------- local projects list ---------- */
-  .project-list{margin-top:8px;border-top:1px solid var(--line);}
-  .project-row{
-    display:flex;justify-content:space-between;align-items:baseline;gap:20px;
-    padding:20px 0;border-bottom:1px solid var(--line);
-  }
-  .project-name{font-family:var(--display);font-size:17px;color:var(--white);}
-  .project-tag{font-family:var(--mono);font-size:11px;color:var(--steel);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;}
-
-  /* ---------- nearby communities ---------- */
-  .community-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
-  .community-chip{
-    font-family:var(--mono);font-size:12px;color:#4A4E43;
-    border:1px solid var(--line-dark);padding:9px 15px;
-  }
+  .timeline-year{font-family:var(--mono);font-size:20px;color:var(--brand-green);font-weight:600;}
+  .timeline-text h4{font-family:var(--display);font-size:18px;color:var(--ink);margin-bottom:6px;}
+  .timeline-text p{font-size:14.5px;color:#4A4E43;line-height:1.65;max-width:520px;}
+  @media(max-width:600px){.timeline-row{grid-template-columns:1fr;gap:6px;}}
 
 </style>
 <style>
-  .et-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:40px;}
-  .et-head .section-sub{margin-top:14px;}
-  .link-arrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acid);display:inline-flex;gap:10px;align-items:center;border-bottom:1px solid rgba(198,255,61,.35);padding-bottom:6px;}
-  .link-arrow:hover{border-color:var(--acid);}
-  .et-gal-sec{background:var(--black);border-top:1px solid var(--line);}
-  .et-ba-sec{background:var(--charcoal-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .subhero.et-real .subhero-photo{opacity:1 !important;}
-  .subhero.et-real .subhero-overlay{background:
-      linear-gradient(0deg, rgba(6,7,5,0.94) 6%, rgba(6,7,5,0.5) 48%, rgba(6,7,5,0.22) 100%),
-      linear-gradient(90deg, rgba(6,7,5,0.7) 0%, rgba(6,7,5,0.05) 62%);}
-  .subhero .et-real-tag{position:absolute;right:32px;bottom:24px;z-index:3;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:rgba(255,255,255,.8);}
-  .subhero .et-real-tag b{color:var(--acid);font-weight:500;}
-  @media(max-width:768px){.subhero .et-real-tag{display:none;}}
+  .proj-stats{display:flex;gap:40px;margin-top:34px;flex-wrap:wrap;}
+  .proj-stats div{font-family:var(--mono);}
+  .proj-stats .n{font-size:28px;color:var(--acid);font-weight:600;line-height:1;}
+  .proj-stats .l{font-size:10.5px;color:var(--steel);letter-spacing:.1em;text-transform:uppercase;margin-top:6px;}
+  .proj-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:1fr 1fr;gap:3px;opacity:.8;}
+  .proj-mosaic img{width:100%;height:100%;object-fit:cover;}
+  .subhero.has-mosaic .subhero-overlay{background:linear-gradient(0deg,rgba(6,7,5,.95) 5%,rgba(6,7,5,.55) 50%,rgba(6,7,5,.35)),linear-gradient(90deg,rgba(6,7,5,.75),rgba(6,7,5,.1) 70%);}
+  .proj-mosaic img:nth-child(1){grid-column:span 2;grid-row:span 2;}
+  @media(max-width:800px){.proj-mosaic{grid-template-columns:repeat(3,1fr);}.proj-mosaic img:nth-child(n+6){display:none;}}
+  .gal-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:-6px 0 22px;flex-wrap:wrap;}
+  .etg-count{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--acid);}
+  .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:44px;}
+  .ba-section{background:var(--charcoal-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .final-cta.has-photo{overflow:hidden;}
+  .final-cta .cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;}
+  .final-cta.has-photo::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,rgba(6,7,5,.55),rgba(6,7,5,.94) 75%);}
+  .final-cta.has-photo .wrap{position:relative;z-index:2;}
 </style>
-<link rel="stylesheet" href="../css/et-gallery.css">
-<style id="et-mobile-fix">@media(max-width:600px){.svc-index-grid{grid-template-columns:1fr !important;}}</style>
+<link rel="stylesheet" href="css/et-gallery.css">
 </head>
 <body>
   <div class="mobile-overlay"></div>
@@ -862,60 +800,60 @@
 
 <header>
   <nav class="nav wrap">
-    <a href="../index.html" class="logo"><img src="../images/eternaturf.png" alt="EternaTurf"></a>
+    <a href="index.html" class="logo"><img src="images/eternaturf.png" alt="EternaTurf"></a>
     <ul class="nav-links">
-      <li><a class="top-link" href="../services/index.html">Services <span class="caret"></span></a>
+      <li><a class="top-link" href="services/index.html">Services <span class="caret"></span></a>
         <div class="mega two-col">
           <div>
             <div class="mega-col-title">TURF</div>
-            <a class="mega-link" href="../services/artificial-landscape-turf.html">Landscape Turf</a>
-            <a class="mega-link" href="../services/artificial-pet-turf.html">Pet Turf</a>
-            <a class="mega-link" href="../services/artificial-sports-turf.html">Sports Turf</a>
-            <a class="mega-link" href="../services/artificial-putting-greens.html">Putting Greens</a>
-            <a class="mega-link" href="../services/artificial-playground-turf.html">Playground Turf</a>
-            <a class="mega-link" href="../services/custom-turf-projects.html">Custom Turf Projects</a>
+            <a class="mega-link" href="services/artificial-landscape-turf.html">Landscape Turf</a>
+            <a class="mega-link" href="services/artificial-pet-turf.html">Pet Turf</a>
+            <a class="mega-link" href="services/artificial-sports-turf.html">Sports Turf</a>
+            <a class="mega-link" href="services/artificial-putting-greens.html">Putting Greens</a>
+            <a class="mega-link" href="services/artificial-playground-turf.html">Playground Turf</a>
+            <a class="mega-link" href="services/custom-turf-projects.html">Custom Turf Projects</a>
           </div>
           <div>
             <div class="mega-col-title">OUTDOOR &amp; SURFACES</div>
-            <a class="mega-link" href="../services/turf-cleaning.html">Turf Cleaning</a>
-            <a class="mega-link" href="../services/hardscaping.html">Hardscaping</a>
-            <a class="mega-link" href="../services/pine-straw.html">Artificial Pine Straw</a>
-            <a class="mega-link" href="../services/rubber-mulch.html">Rubber Mulch</a>
-            <a class="mega-link" href="../services/rubber-surfacing.html">Rubber Surfacing</a>
-            <a class="mega-link" href="../services/playground-equipment.html">Playground Equipment</a>
-            <a class="mega-link" href="../services/shade-structures.html">Shade Structures</a>
+            <a class="mega-link" href="services/turf-cleaning.html">Turf Cleaning</a>
+            <a class="mega-link" href="services/hardscaping.html">Hardscaping</a>
+            <a class="mega-link" href="services/pine-straw.html">Artificial Pine Straw</a>
+            <a class="mega-link" href="services/rubber-mulch.html">Rubber Mulch</a>
+            <a class="mega-link" href="services/rubber-surfacing.html">Rubber Surfacing</a>
+            <a class="mega-link" href="services/playground-equipment.html">Playground Equipment</a>
+            <a class="mega-link" href="services/shade-structures.html">Shade Structures</a>
           </div>
         </div>
       </li>
-      <li><a class="top-link" href="../projects.html">Projects</a></li>
-      <li><a class="top-link" href="index.html">Locations <span class="caret"></span></a>
+      <li><a class="top-link" href="projects.html">Projects</a></li>
+      <li><a class="top-link" href="national-locations/index.html">Locations <span class="caret"></span></a>
         <div class="mega two-col">
           <div>
             <div class="mega-col-title">ETERNATURF LOCATIONS</div>
-            <a class="mega-link" href="louisville-artificial-turf.html">Louisville, KY</a>
-            <a class="mega-link" href="lexington-kentucky-artificial-turf-installation.html">Lexington, KY</a>
-            <a class="mega-link" href="toledo-ohio-artificial-turf.html">Toledo, OH</a>
-            <a class="mega-link" href="sarasota-fl.html">Sarasota, FL</a>
-            <a class="mega-link" href="tampa-florida-artificial-turf.html">Tampa, FL</a>
+            <a class="mega-link" href="national-locations/louisville-artificial-turf.html">Louisville, KY</a>
+            <a class="mega-link" href="national-locations/lexington-kentucky-artificial-turf-installation.html">Lexington, KY</a>
+            <a class="mega-link" href="national-locations/toledo-ohio-artificial-turf.html">Toledo, OH</a>
+            <a class="mega-link" href="national-locations/sarasota-fl.html">Sarasota, FL</a>
+            <a class="mega-link" href="national-locations/tampa-florida-artificial-turf.html">Tampa, FL</a>
           </div>
           <div>
             <div class="mega-col-title">AREAS WE SERVE</div>
-            <a class="mega-link" href="elizabethtown.html">Elizabethtown, KY</a>
-            <a class="mega-link" href="bowling-green.html">Bowling Green, KY</a>
-            <a class="mega-link" href="bardstown.html">Bardstown, KY</a>
-            <a class="mega-link" href="charlestown.html">Charlestown, IN</a>
-            <a class="mega-link" href="jeffersonville.html">Jeffersonville, IN</a>
-            <a class="mega-link" href="floyds-knobs.html">Floyds Knobs, IN</a>
+            <a class="mega-link" href="national-locations/elizabethtown.html">Elizabethtown, KY</a>
+            <a class="mega-link" href="national-locations/bowling-green.html">Bowling Green, KY</a>
+            <a class="mega-link" href="national-locations/bardstown.html">Bardstown, KY</a>
+            <a class="mega-link" href="national-locations/charlestown.html">Charlestown, IN</a>
+            <a class="mega-link" href="national-locations/jeffersonville.html">Jeffersonville, IN</a>
+            <a class="mega-link" href="national-locations/floyds-knobs.html">Floyds Knobs, IN</a>
           </div>
         </div>
       </li>
-      <li><a class="top-link" href="../about-us.html">About</a></li>
+      <li><a class="top-link" href="about-us.html">About</a></li>
       <li><a class="top-link" href="#">Turf Talk</a></li>
-      <li><a class="top-link" href="../faq.html">FAQ</a></li>
+      <li><a class="top-link" href="faq.html">FAQ</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="../contact.html" class="btn btn-outline">Contact</a>
-      <a href="../contact.html" class="btn btn-acid">Get a Free Quote</a>
+      <a href="contact.html" class="btn btn-outline">Contact</a>
+      <a href="contact.html" class="btn btn-acid">Get a Free Quote</a>
       <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 
     </div>
@@ -923,163 +861,99 @@
 </header>
 
 
-<section class="subhero et-real" style="min-height:60vh;">
-  <img class="subhero-photo" src="../images/projects/stone-border-putting-green.jpg" alt="Backyard putting green framed by a curved stone border at a brick home" style="object-position:center 60%;" fetchpriority="high">
+<section class="subhero has-mosaic" style="min-height:62vh;">
+  <div class="proj-mosaic" aria-hidden="true">
+    <img src="images/projects/hero/tropical-putting-course.jpg" alt="">
+    <img src="images/projects/thumb/pavilion-lawn.jpg" alt="">
+    <img src="images/projects/thumb/fire-pit-island.jpg" alt="">
+    <img src="images/projects/thumb/striped-lawn.jpg" alt="">
+    <img src="images/projects/thumb/palm-bed-lawn.jpg" alt="">
+    <img src="images/projects/thumb/lakeside-fire-pit.jpg" alt="">
+    <img src="images/projects/thumb/stone-border-putting-green.jpg" alt="">
+    <img src="images/projects/thumb/front-yard-edging.jpg" alt="">
+    <img src="images/projects/thumb/indoor-field.jpg" alt="">
+  </div>
   <div class="subhero-overlay"></div>
   <div class="subhero-grid"></div>
-  <div class="et-real-tag"><b>REAL INSTALL</b> · Stone-Bordered Putting Green · Greater Louisville, KY</div>
   <div class="wrap subhero-inner">
-    <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span class="current">Locations</span><span class="sep">/</span><span class="current">Lexington, KY</span></div>
-    <div class="loc-badge"><span class="dot"></span>ETERNATURF LOCATION</div>
-    <h1>Lexington, KY.</h1>
-    <p class="subhero-sub">From horse country estates to urban businesses, our licensed and bonded team serves the greater Lexington area with premium turf, hardscaping, and outdoor surfacing.</p>
-    <div class="hero-ctas" style="margin-top:36px;">
-      <a href="../contact.html" class="btn btn-acid">Get a Free Quote</a>
-      <a href="tel:8596953214" class="btn btn-outline">Call (859) 695-3214</a>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span class="current">Projects</span></div>
+    <h1>Our work, in the wild.</h1>
+    <p class="subhero-sub">Every photo here is a real EternaTurf install, from backyard lawns and putting greens to pool surrounds and indoor sports fields. Filter by project type or by area to see work near you.</p>
+    <div class="proj-stats">
+      <div><div class="n" id="statPhotos">54</div><div class="l">Project photos</div></div>
+      <div><div class="n" id="statBA">17</div><div class="l">Before &amp; afters</div></div>
+      <div><div class="n">4</div><div class="l">States</div></div>
     </div>
   </div>
 </section>
 
-<section class="pad">
-  <div class="wrap split-section" data-reveal>
-    <div>
-      <div class="eyebrow">VISIT OR CALL</div>
-      <h2 class="section-title" style="font-size:clamp(28px,3.2vw,42px);">Reach the Lexington team.</h2>
-      <p class="section-sub">EternaTurf serves the greater Lexington market as part of our Kentucky footprint alongside our Louisville headquarters. Reach out through our main line for a free consultation and quote.</p>
-      <div class="contact-panel" style="margin-top:32px;">
-        <div class="contact-row">
-          <div class="contact-icon">A</div>
-          <div><div class="contact-label">Address</div><div class="contact-value">2028 Regency Rd, Suite 203<br>Lexington, KY 40503</div></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-icon">P</div>
-          <div><div class="contact-label">Phone</div><div class="contact-value"><a href="tel:8596953214">(859) 695-3214</a></div></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-icon">E</div>
-          <div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:sales@eternaturf.com">sales@eternaturf.com</a></div></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-icon">★</div>
-          <div><div class="contact-label">Reputation</div><div class="contact-value">5.0 stars · 103 Google reviews</div></div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="geo-panel">
-        <div class="geo-panel-head"><span>LEXINGTON.MAP</span><span>KENTUCKY</span></div>
-        <div class="footprint-map" id="lexingtonMap"></div>
-        <div class="footprint-caption">Map data © OpenStreetMap contributors, © CARTO.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="pad on-light">
-  <div class="wrap" data-reveal>
-    <div class="eyebrow on-light">BUILT FOR LEXINGTON'S WEATHER</div>
-    <h2 class="section-title">Turf that handles the Bluegrass Region's spring storms.</h2>
-    <p class="section-sub" style="max-width:640px;">Our turf systems include permeable backing and drainage layers that prevent puddles and let water flow freely, even during Lexington's heaviest spring storms — engineered for the region, not just installed in it.</p>
-  </div>
-</section>
-
-<section class="pad">
-  <div class="wrap" data-reveal>
-    <div class="eyebrow">SERVICES IN LEXINGTON</div>
-    <h2 class="section-title" style="font-size:clamp(28px,3.2vw,42px);">Everything we build, available here.</h2>
-    <div class="related-strip" style="margin-top:32px;">
-      <a href="../services/artificial-landscape-turf.html" class="related-chip"><div class="rc-label">Service</div><div class="rc-name">Landscape Turf</div></a>
-      <a href="../services/artificial-pet-turf.html" class="related-chip"><div class="rc-label">Service</div><div class="rc-name">Pet Turf</div></a>
-      <a href="../services/artificial-sports-turf.html" class="related-chip"><div class="rc-label">Service</div><div class="rc-name">Sports Turf</div></a>
-      <a href="../services/artificial-putting-greens.html" class="related-chip"><div class="rc-label">Service</div><div class="rc-name">Putting Greens</div></a>
-    </div>
-    <div class="related-strip" style="margin-top:1px;">
-      <a href="../services/artificial-playground-turf.html" class="related-chip"><div class="rc-label">Service</div><div class="rc-name">Playground Turf</div></a>
-      <a href="../services/hardscaping.html" class="related-chip"><div class="rc-label">Service</div><div class="rc-name">Hardscaping</div></a>
-      <a href="../services/custom-turf-projects.html" class="related-chip"><div class="rc-label">Service</div><div class="rc-name">Custom Projects</div></a>
-      <a href="../services/index.html" class="related-chip"><div class="rc-label">All Services</div><div class="rc-name">View Full List →</div></a>
-    </div>
-  </div>
-</section>
-
-<section class="pad on-light">
-  <div class="wrap" data-reveal>
-    <div class="eyebrow on-light">FROM LEXINGTON CUSTOMERS</div>
-    <h2 class="section-title">What it's like working with our team.</h2>
-    <div class="svc-index-grid cols-2" style="margin-top:40px;background:var(--line-dark);border-color:var(--line-dark);">
-      <div class="svc-index-card" style="background:#F5F6F0;min-height:auto;">
-        <div><div class="stars">★★★★★</div><p class="testi-quote" style="margin-top:14px;color:#4A4E43;">"The EternaTurf team wrapped up the job right before heavy rains hit the area, and not a single muddy mess was left behind. No more mess, green year-round, and it comes with a real warranty."</p></div>
-        <div class="testi-name" style="margin-top:18px;color:var(--brand-green);">Lexington Homeowner · Landscape Turf</div>
-      </div>
-      <div class="svc-index-card" style="background:#F5F6F0;min-height:auto;">
-        <div><div class="stars">★★★★★</div><p class="testi-quote" style="margin-top:14px;color:#4A4E43;">"We'd struggled for years with soggy patches and lawn damage every spring. The job wrapped just before a big rainstorm, and the results were immediate — no more mud, no more mess, and we can finally enjoy our backyard year-round."</p></div>
-        <div class="testi-name" style="margin-top:18px;color:var(--brand-green);">Lexington Homeowner · Landscape Turf</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="pad">
-  <div class="wrap" data-reveal>
-    <div class="eyebrow">ELSEWHERE IN KENTUCKY</div>
-    <h2 class="section-title" style="font-size:clamp(26px,2.8vw,36px);">Other communities we serve.</h2>
-    <p class="section-sub">Alongside our Lexington and Louisville locations, EternaTurf serves additional Kentucky communities as service areas — without a physical office in each.</p>
-    <div class="loc-chip-row">
-      <span class="loc-chip"><span class="d" style="background:transparent;border:1.5px solid var(--steel);"></span>Elizabethtown, KY</span>
-      <span class="loc-chip"><span class="d" style="background:transparent;border:1.5px solid var(--steel);"></span>Bowling Green, KY</span>
-      <span class="loc-chip"><span class="d" style="background:transparent;border:1.5px solid var(--steel);"></span>Bardstown, KY</span>
-      <span class="loc-chip"><a href="louisville-artificial-turf.html" style="color:var(--fog-2);"><span class="d"></span>Louisville, KY (HQ)</a></span>
-    </div>
-  </div>
-</section>
-
-<section class="pad et-gal-sec">
+<section class="pad" id="portfolio">
   <div class="wrap">
-    <div class="et-head" data-reveal><div><div class="eyebrow">KENTUCKY WORK</div><h2 class="section-title">Recent Kentucky installs.</h2><p class="section-sub">A sample of recent work from our Kentucky crews in the Louisville area.</p></div><a class="link-arrow" href="../projects.html">View all projects →</a></div>
-    <div data-reveal data-et-gallery data-layout="masonry" data-region="louisville" data-limit="9"></div>
+    <div class="head-row" data-reveal>
+      <div>
+        <div class="eyebrow">PORTFOLIO</div>
+        <h2 class="section-title">Browse by type or by area.</h2>
+      </div>
+    </div>
+    <div data-et-gallery data-layout="masonry" data-filters="both" data-url-filters="1">
+      <div class="gal-bar"><span class="etg-count"></span></div>
+    </div>
   </div>
 </section>
 
-<section class="pad final-cta">
+<section class="pad ba-section" id="before-after">
+  <div class="wrap">
+    <div class="head-row" data-reveal>
+      <div>
+        <div class="eyebrow">BEFORE &amp; AFTER</div>
+        <h2 class="section-title">Transformations.</h2>
+        <p class="section-sub">Drag each slider to compare the yard before we started and after we finished.</p>
+      </div>
+    </div>
+    <div data-et-ba data-layout="grid"></div>
+  </div>
+</section>
+
+<section class="pad final-cta has-photo">
+  <img class="cta-bg" src="images/projects/pond-putting-green.jpg" alt="" loading="lazy" aria-hidden="true">
   <div class="wrap" data-reveal>
-    <div class="eyebrow" style="justify-content:center;">READY WHEN YOU ARE</div>
-    <h2>Let's build your Lexington-area project.</h2>
-    <p>Backyard, sports field, playground, or commercial property — tell us what you're working with and our team will take it from there.</p>
-    <div class="hero-ctas"><a href="../contact.html" class="btn btn-acid">Get a Free Quote</a><a href="tel:8596953214" class="btn btn-outline">Call (859) 695-3214</a></div>
+    <div class="eyebrow" style="justify-content:center;">YOUR YARD COULD BE NEXT</div>
+    <h2>Let's build your outdoor space.</h2>
+    <p>Tell us what you're working with, whether it's a backyard, putting green, pool area, or commercial property, and we'll take it from there.</p>
+    <div class="hero-ctas"><a href="contact.html" class="btn btn-acid">Get a Free Quote</a><a href="tel:8126356520" class="btn btn-outline">Call (812) 635-6520</a></div>
   </div>
 </section>
-
 
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a href="../index.html" class="foot-logo"><img src="../images/eternaturf.png" alt="EternaTurf"></a>
+        <a href="index.html" class="foot-logo"><img src="images/eternaturf.png" alt="EternaTurf"></a>
         <p class="foot-desc">Premium artificial turf, hardscaping, and outdoor surfacing for homes and businesses across Kentucky, Indiana, Ohio, and Florida. Licensed, bonded, and veteran-owned since 2018.</p>
       </div>
       <div class="foot-col">
         <h5>Services</h5>
-        <a href="../services/artificial-landscape-turf.html">Landscape Turf</a>
-        <a href="../services/artificial-pet-turf.html">Pet Turf</a>
-        <a href="../services/artificial-sports-turf.html">Sports Turf</a>
-        <a href="../services/artificial-putting-greens.html">Putting Greens</a>
-        <a href="../services/hardscaping.html">Hardscaping</a>
+        <a href="services/artificial-landscape-turf.html">Landscape Turf</a>
+        <a href="services/artificial-pet-turf.html">Pet Turf</a>
+        <a href="services/artificial-sports-turf.html">Sports Turf</a>
+        <a href="services/artificial-putting-greens.html">Putting Greens</a>
+        <a href="services/hardscaping.html">Hardscaping</a>
       </div>
       <div class="foot-col">
         <h5>Locations</h5>
-        <a href="louisville-artificial-turf.html">Louisville, KY</a>
-        <a href="lexington-kentucky-artificial-turf-installation.html">Lexington, KY</a>
-        <a href="toledo-ohio-artificial-turf.html">Toledo, OH</a>
-        <a href="sarasota-fl.html">Sarasota, FL</a>
-        <a href="tampa-florida-artificial-turf.html">Tampa, FL</a>
+        <a href="national-locations/louisville-artificial-turf.html">Louisville, KY</a>
+        <a href="national-locations/lexington-kentucky-artificial-turf-installation.html">Lexington, KY</a>
+        <a href="national-locations/toledo-ohio-artificial-turf.html">Toledo, OH</a>
+        <a href="national-locations/sarasota-fl.html">Sarasota, FL</a>
+        <a href="national-locations/tampa-florida-artificial-turf.html">Tampa, FL</a>
       </div>
       <div class="foot-col">
         <h5>Company</h5>
-        <a href="../about-us.html">About Us</a>
-        <a href="../projects.html">Projects</a>
+        <a href="about-us.html">About Us</a>
+        <a href="projects.html">Projects</a>
         <a href="#">Turf Talk</a>
-        <a href="../faq.html">FAQ</a>
-        <a href="../contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
       </div>
       <div class="foot-col">
         <h5>Get In Touch</h5>
@@ -1090,7 +964,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 EternaTurf. All rights reserved. · Privacy Policy · Terms</span>
-      <div class="foot-vet"><img src="../images/veteran-owned-business.jpg" alt="Veteran Owned"></div>
+      <div class="foot-vet"><img src="images/veteran-owned-business.jpg" alt="Veteran Owned"></div>
       <div class="foot-social">
         <a href="https://www.facebook.com/eternaturf">Facebook</a>
         <a href="https://www.instagram.com/eternaturf/">Instagram</a>
@@ -1112,34 +986,6 @@
   window.addEventListener('scroll', ()=>{
     header.classList.toggle('shrink', window.scrollY > 40);
   }, {passive:true});
-
-  const mapEl = document.getElementById('lexingtonMap');
-  if(mapEl && window.L){
-    const lat = 38.0406, lng = -84.5037;
-    const map = L.map(mapEl, { scrollWheelZoom:false, zoomControl:true }).setView([lat, lng], 11);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors &copy; <a href=\"https://carto.com/attributions\">CARTO</a>',
-      subdomains: 'abcd', maxZoom: 19
-    }).addTo(map);
-    const icon = L.divIcon({ className:'map-pin', html:'<div class=\"map-pin-solid\"></div>', iconSize:[16,16] });
-    L.marker([lat, lng], {icon}).addTo(map).bindTooltip('EternaTurf Lexington', {
-      permanent:false, direction:'top', className:'map-tooltip', offset:[0,-8]
-    });
-    function fitMap(){ map.invalidateSize(); map.setView([lat, lng], 11); }
-    const mapIO = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          mapEl.classList.add('in');
-          requestAnimationFrame(()=>requestAnimationFrame(fitMap));
-          setTimeout(fitMap, 250);
-          mapIO.unobserve(mapEl);
-        }
-      });
-    },{threshold:0.2});
-    mapIO.observe(mapEl);
-    window.addEventListener('resize', fitMap);
-  }
-
 </script>
 
 <script>
@@ -1212,7 +1058,8 @@
 })();
 
 </script>
-<script src="../js/projects-data.js"></script>
-<script src="../js/et-gallery.js"></script>
+<script src="js/projects-data.js"></script>
+<script src="js/et-gallery.js"></script>
+<script>document.getElementById("statPhotos").textContent=ET_PROJECTS.length;document.getElementById("statBA").textContent=ET_BA.length;</script>
 </body>
 </html>
