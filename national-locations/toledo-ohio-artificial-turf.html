@@ -9,8 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
 <style>
 
@@ -966,11 +964,7 @@
       </div>
     </div>
     <div>
-      <div class="geo-panel">
-        <div class="geo-panel-head"><span>TOLEDO.MAP</span><span>TEMPERANCE, MI</span></div>
-        <div class="footprint-map" id="toledoMap"></div>
-        <div class="footprint-caption">Map data © OpenStreetMap contributors, © CARTO.</div>
-      </div>
+      <div data-et-map="ov" data-focus="toledo" data-legend="0"></div>
     </div>
   </div>
 </section>
@@ -1204,5 +1198,6 @@
 </script>
 <script src="../js/projects-data.js"></script>
 <script src="../js/et-gallery.js"></script>
+<script src="../js/et-map.js"></script>
 </body>
 </html>

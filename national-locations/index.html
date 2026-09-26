@@ -9,8 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
 <style>
 
@@ -950,15 +948,7 @@
   <div class="wrap" data-reveal>
     <div class="eyebrow">FULL FOOTPRINT</div>
     <h2 class="section-title">Where we work.</h2>
-    <div class="geo-legend" style="margin-top:32px;">
-      <span class="legend-dot"><span class="dot"></span> ETERNATURF LOCATION</span>
-      <span class="legend-dot"><span class="dot outline"></span> SERVICE AREA</span>
-    </div>
-    <div class="geo-panel" style="margin-top:24px;">
-      <div class="geo-panel-head"><span>FOOTPRINT.MAP</span><span>DRAG TO EXPLORE</span></div>
-      <div class="footprint-map" id="footprintMap"></div>
-      <div class="footprint-caption">Solid pins: EternaTurf locations. Outlined pins: communities served without a local office. Map data © OpenStreetMap contributors, © CARTO.</div>
-    </div>
+    <div data-et-map style="margin-top:28px;"></div>
   </div>
 </section>
 
@@ -1298,5 +1288,6 @@
 </script>
 <script src="../js/projects-data.js"></script>
 <script src="../js/et-gallery.js"></script>
+<script src="../js/et-map.js"></script>
 </body>
 </html>
