@@ -620,11 +620,12 @@
   .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;z-index:1;}
   .hero.has-video .hero-video{opacity:1;}
   .hero.has-video .hero-photo{visibility:hidden;}
-  .hero.has-video .hero-dots{display:none;}
+  .hero.has-video .hero-dots{opacity:0;}
+  .hero.has-reel .hero-dots{left:132px;bottom:33px;transition:opacity .4s;}
   .hero-vbtn{position:absolute;left:32px;bottom:22px;z-index:4;display:none;align-items:center;gap:8px;background:rgba(6,7,5,.6);
     border:1px solid var(--line);color:#fff;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;padding:7px 11px;cursor:pointer;}
   .hero-vbtn:hover{border-color:var(--acid);color:var(--acid);}
-  .hero.has-video .hero-vbtn{display:inline-flex;}
+  .hero.has-reel .hero-vbtn{display:inline-flex;}
   .hero-vbtn i{width:8px;height:10px;border-left:3px solid currentColor;border-right:3px solid currentColor;}
   .hero-vbtn.paused i{border:0;width:0;height:0;border-left:9px solid currentColor;border-top:5px solid transparent;border-bottom:5px solid transparent;}
   /* dots + caption move off the form */
@@ -804,9 +805,9 @@
   <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Oak tree lawn · Tampa Bay, FL" src="images/projects/hero/oak-tree-lawn.jpg" alt="Large artificial lawn with a mature oak tree and white vinyl fence" style="object-position:center 62%">
   <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Stone-bordered putting green · Greater Louisville, KY" src="images/projects/hero/stone-border-putting-green.jpg" alt="Backyard putting green framed by a curved stone border" style="object-position:center 60%">
   <img class="hero-photo" data-caption="&lt;b&gt;REAL INSTALL&lt;/b&gt; · Sand bunker green · Tampa Bay, FL" src="images/projects/hero/sand-bunker-green.jpg" alt="Backyard putting green with sand bunker and white vinyl fence" style="object-position:center 62%">
-  <video class="hero-video" id="heroVideo" muted loop playsinline preload="none" poster="video/hero-reel-poster.jpg" aria-hidden="true" data-mp4="video/hero-reel.mp4" data-webm="video/hero-reel.webm"></video>
+  <video class="hero-video" id="heroVideo" muted playsinline preload="none" poster="video/hero-reel-poster.jpg" aria-hidden="true" data-mp4="video/hero-reel.mp4" data-webm="video/hero-reel.webm"></video>
   <div class="hero-photo-overlay"></div>
-  <button class="hero-vbtn" id="heroVbtn" type="button" aria-label="Pause background video"><i></i><span>PAUSE</span></button>
+  <button class="hero-vbtn" id="heroVbtn" type="button" aria-label="Pause background slideshow"><i></i><span>PAUSE</span></button>
   <div class="hero-grid" id="heroGrid"></div>
   <div class="hero-corner"></div>
   <div class="hero-dots" id="heroDots"></div>
@@ -1183,6 +1184,7 @@
   const kbVariants = ['kb-a','kb-b','kb-c','kb-d'];
   let heroIndex = 0;
   let heroTimer;
+  let heroHook = null;   // lets the drone reel take a turn in the rotation
 
   function playKenBurns(img, i){
     kbVariants.forEach(v=>img.classList.remove(v));
@@ -1214,28 +1216,55 @@
     }
     function startHeroTimer(){
       heroTimer = setInterval(()=>{
+        if(heroHook && heroHook()) return;
         goToSlide((heroIndex + 1) % heroPhotos.length);
       }, 6000);
     }
     startHeroTimer();
   }
 
-  // Drone reel: desktop/tablet only, skipped for reduced-motion and data-saver visitors (they keep the photo slideshow)
+  // Drone reel alternates with the photo slideshow: reel (1 pass) -> 4 photos -> reel ...
+  // Desktop/tablet only; phones, reduced-motion and data-saver visitors keep the photo slideshow.
   (function(){
     const v = document.getElementById('heroVideo'), btn = document.getElementById('heroVbtn'), hero = document.querySelector('.hero');
-    if(!v) return;
+    if(!v || !heroPhotos.length) return;
     const saveData = navigator.connection && navigator.connection.saveData;
     if(reduceMotion || saveData || !matchMedia('(min-width:769px)').matches) return;
+    const PHOTOS_PER_TURN = 4;
+    const REEL_CAPTION = '<b>REAL INSTALLS</b> &middot; Drone footage &middot; Kentucky &amp; Indiana';
+    let phase = 'photos', shown = 0, paused = false;
     v.src = v.canPlayType('video/mp4; codecs="avc1.640028"') ? v.dataset.mp4 : v.dataset.webm;
+    hero.classList.add('has-reel');
+
+    function startReel(){
+      phase = 'reel'; clearInterval(heroTimer);
+      v.currentTime = 0;
+      v.play().catch(()=>{ phase = 'photos'; startHeroTimer(); });   // if autoplay is blocked, just keep the slideshow
+    }
     v.addEventListener('playing', ()=>{
-      hero.classList.add('has-video'); clearInterval(heroTimer);
-      heroCaption.innerHTML = '<b>REAL INSTALLS</b> · Drone footage · Kentucky &amp; Indiana';
-    }, {once:true});
-    v.play().catch(()=>{});
-    btn.addEventListener('click', ()=>{
-      if(v.paused){ v.play(); btn.classList.remove('paused'); btn.querySelector('span').textContent='PAUSE'; btn.setAttribute('aria-label','Pause background video'); }
-      else { v.pause(); btn.classList.add('paused'); btn.querySelector('span').textContent='PLAY'; btn.setAttribute('aria-label','Play background video'); }
+      if(phase !== 'reel') return;
+      hero.classList.add('has-video'); heroCaption.innerHTML = REEL_CAPTION;
     });
+    v.addEventListener('ended', ()=>{
+      phase = 'photos'; shown = 0;
+      hero.classList.remove('has-video');
+      goToSlide((heroIndex + 1) % heroPhotos.length);   // restarts the photo timer
+    });
+    // after N photos, hand the next turn to the reel
+    heroHook = ()=>{ if(++shown >= PHOTOS_PER_TURN){ startReel(); return true; } return false; };
+
+    btn.addEventListener('click', ()=>{
+      paused = !paused;
+      if(paused){ v.pause(); clearInterval(heroTimer); }
+      else if(phase === 'reel'){ v.play(); }
+      else { startHeroTimer(); }
+      btn.classList.toggle('paused', paused);
+      btn.querySelector('span').textContent = paused ? 'PLAY' : 'PAUSE';
+      btn.setAttribute('aria-label', paused ? 'Play background slideshow' : 'Pause background slideshow');
+    });
+    // open with the reel once it can play; photo 1 shows meanwhile
+    v.addEventListener('canplay', ()=>{ if(phase === 'photos' && shown === 0 && !paused && !hero.classList.contains('reel-started')){ hero.classList.add('reel-started'); startReel(); } }, {once:true});
+    v.load();
   })();
 
   // Header shrink on scroll
