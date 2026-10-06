@@ -182,3 +182,6 @@ body.etg-lock{overflow:hidden;}
 .etg-more{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap;}
 .etg-more .note{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--steel);text-transform:uppercase;}
 .etg-empty{font-family:var(--mono);font-size:12px;color:var(--steel);padding:30px 0;}
+
+/* ---------- subhero alignment fix: keep hero text on the page grid at every width ---------- */
+.subhero .subhero-inner{width:100%;padding-left:32px;padding-right:32px;}
