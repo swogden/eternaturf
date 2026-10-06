@@ -185,3 +185,5 @@ body.etg-lock{overflow:hidden;}
 
 /* ---------- subhero alignment fix: keep hero text on the page grid at every width ---------- */
 .subhero .subhero-inner{width:100%;padding-left:32px;padding-right:32px;}
+
+.etg-baf.single{max-width:820px;}

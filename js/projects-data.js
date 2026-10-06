@@ -1,6 +1,6 @@
 /* Auto-generated project photo data. Regions are city/area level only. */
-window.ET_REGIONS={"louisville": "Greater Louisville, KY", "sindiana": "Southern Indiana", "toledo": "Toledo Area, OH", "sarasota": "Sarasota Area, FL", "tampa": "Tampa Bay, FL", "florida": "Florida"};
-window.ET_CATS={"lawn": "Lawns & Yards", "putting": "Putting Greens", "living": "Outdoor Living", "pool": "Pool Surrounds", "front": "Front Yards", "side": "Side Yards", "commercial": "Commercial & Sports"};
+window.ET_REGIONS={"louisville": "Greater Louisville, KY", "sindiana": "Southern Indiana", "toledo": "Toledo Area, OH", "sarasota": "Sarasota Area, FL", "tampa": "Tampa Bay, FL", "florida": "Florida", "other": "Other Areas"};
+window.ET_CATS={"lawn": "Lawns & Yards", "putting": "Putting Greens", "living": "Outdoor Living", "pool": "Pool Surrounds", "front": "Front Yards", "side": "Side Yards", "commercial": "Commercial & Sports", "playground": "Playgrounds", "surfacing": "Rubber Mulch & Surfacing", "shade": "Shade Structures"};
 window.ET_PROJECTS=[
 {
 "id": "pavilion-lawn",
@@ -668,6 +668,322 @@ window.ET_PROJECTS=[
 "alt": "Long backyard putting green with two flags between a slat fence and palms",
 "w": 1200,
 "h": 1600
+},
+{
+"id": "school-playground-turf",
+"title": "School Playground Turf",
+"region": "other",
+"place": "School Playground",
+"cats": [
+"playground",
+"commercial"
+],
+"alt": "Artificial playground turf at a school with slides, climbers and a hippo play sculpture",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "school-playground-hippo",
+"title": "Playground Turf, Up Close",
+"region": "other",
+"place": "School Playground",
+"cats": [
+"playground",
+"commercial"
+],
+"alt": "Bright green playground turf beside a school building with slides and a teal hippo",
+"w": 1280,
+"h": 960
+},
+{
+"id": "backyard-playset-turf",
+"title": "Backyard Playset Turf",
+"region": "other",
+"place": "Residential",
+"cats": [
+"playground",
+"lawn"
+],
+"alt": "White vinyl playset and swings on artificial turf under a blue sky",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "wooded-swing-set-lawn",
+"title": "Wooded Swing Set Lawn",
+"region": "other",
+"place": "Residential",
+"cats": [
+"playground",
+"lawn"
+],
+"alt": "Cedar swing set on artificial turf at the edge of the woods",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "wooded-playset-lawn",
+"title": "Wooded Playset Lawn",
+"region": "other",
+"place": "Residential",
+"cats": [
+"playground",
+"lawn"
+],
+"alt": "Cedar playset with slide on an artificial turf lawn surrounded by trees",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "church-playground-turf",
+"title": "Church Playground Turf",
+"region": "other",
+"place": "Church Playground",
+"cats": [
+"playground",
+"commercial"
+],
+"alt": "Fenced church playground with play structures on artificial turf",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "fenced-playground-turf",
+"title": "Fenced Playground Turf",
+"region": "other",
+"place": "Church Playground",
+"cats": [
+"playground",
+"commercial"
+],
+"alt": "Artificial turf playground along a brick building with iron fence",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "swing-set-play-yard",
+"title": "Swing Set Play Yard",
+"region": "other",
+"place": "Church Playground",
+"cats": [
+"playground"
+],
+"alt": "Fenced swing set play yard with an artificial turf entry path",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "florida-playset-pad",
+"title": "Backyard Playset Pad",
+"region": "florida",
+"place": "Florida",
+"cats": [
+"playground",
+"lawn"
+],
+"alt": "White playset with slides on a square artificial turf pad in a Florida backyard",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "florida-playset-swings",
+"title": "Playset and Swings",
+"region": "florida",
+"place": "Florida",
+"cats": [
+"playground",
+"lawn"
+],
+"alt": "Backyard playset with slides and hammock swings on artificial turf",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "live-oak-playground",
+"title": "Live Oak Playground",
+"region": "florida",
+"place": "Florida",
+"cats": [
+"playground",
+"commercial"
+],
+"alt": "Playground on curved artificial turf beneath live oaks and palms",
+"w": 1600,
+"h": 1446
+},
+{
+"id": "shade-canopy-playground",
+"title": "Shaded Turf Playground",
+"region": "other",
+"place": "Church Playground",
+"cats": [
+"playground",
+"shade"
+],
+"alt": "View from under a shade canopy across an artificial turf playground",
+"w": 1200,
+"h": 1600
+},
+{
+"id": "rubber-mulch-shade-playground",
+"title": "Rubber Mulch Playground",
+"region": "other",
+"place": "School Playground",
+"cats": [
+"surfacing",
+"shade",
+"playground"
+],
+"alt": "Playground with green shade canopy on blue rubber mulch with a curved border",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "shade-canopy-rubber-mulch",
+"title": "Shade Canopy Playground",
+"region": "other",
+"place": "School Playground",
+"cats": [
+"shade",
+"surfacing",
+"playground"
+],
+"alt": "Green shade canopy over a playground surfaced in blue rubber mulch",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "shade-sail-playground",
+"title": "Shade Sail Playground",
+"region": "other",
+"place": "Community Park",
+"cats": [
+"shade",
+"surfacing",
+"playground"
+],
+"alt": "Playground with green shade sail and slides on blue rubber mulch",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "rubber-mulch-slides",
+"title": "Rubber Mulch Under Slides",
+"region": "other",
+"place": "Community Park",
+"cats": [
+"surfacing",
+"playground"
+],
+"alt": "Blue and yellow slides landing on blue rubber mulch safety surfacing",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "rubber-mulch-spinner",
+"title": "Rubber Mulch, Up Close",
+"region": "other",
+"place": "Community Park",
+"cats": [
+"surfacing"
+],
+"alt": "Blue rubber mulch around a playground spinner",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "teal-shade-sail",
+"title": "Teal Shade Sail",
+"region": "other",
+"place": "Play Area",
+"cats": [
+"shade",
+"surfacing"
+],
+"alt": "Teal shade sail over a toddler play structure on rubber mulch",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "blue-shade-structure",
+"title": "Cantilever Shade Structure",
+"region": "other",
+"place": "Commercial Playground",
+"cats": [
+"shade"
+],
+"alt": "Blue cantilever shade structure over a picnic table at a restaurant playground",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "tower-playground",
+"title": "Tower Playground",
+"region": "other",
+"place": "Commercial Playground",
+"cats": [
+"playground",
+"shade"
+],
+"alt": "Tall blue, red and yellow playground tower with tube slide and shade sails",
+"w": 1200,
+"h": 1600
+},
+{
+"id": "poured-rubber-park",
+"title": "Poured Rubber and Turf Park",
+"region": "florida",
+"place": "Florida",
+"cats": [
+"surfacing",
+"playground",
+"commercial"
+],
+"alt": "Community park with blue poured-in-place rubber surfacing and artificial turf mounds",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "poured-rubber-climber",
+"title": "Climber on Poured Rubber",
+"region": "florida",
+"place": "Florida",
+"cats": [
+"surfacing",
+"playground",
+"commercial"
+],
+"alt": "Dome net climber on blue poured-in-place rubber surfacing bordered by artificial turf",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "poured-rubber-swings",
+"title": "Swings on Poured Rubber",
+"region": "florida",
+"place": "Florida",
+"cats": [
+"surfacing",
+"playground",
+"commercial"
+],
+"alt": "Swings over blue poured-in-place rubber surfacing with turf borders",
+"w": 1600,
+"h": 1200
+},
+{
+"id": "poured-rubber-net-climber",
+"title": "Patterned Poured Rubber",
+"region": "other",
+"place": "Community Park",
+"cats": [
+"surfacing",
+"playground",
+"commercial"
+],
+"alt": "Green and blue patterned poured-in-place rubber surfacing under a rope net climber",
+"w": 1600,
+"h": 1200
 }
 ];
 window.ET_BA=[
@@ -820,6 +1136,15 @@ window.ET_BA=[
 "title": "Brick Home Fenced Yard",
 "region": "toledo",
 "place": "Toledo Area, OH",
+"o": "L",
+"w": 1200,
+"h": 900
+},
+{
+"id": "school-playground",
+"title": "School Playground",
+"region": "other",
+"place": "School Playground",
 "o": "L",
 "w": 1200,
 "h": 900

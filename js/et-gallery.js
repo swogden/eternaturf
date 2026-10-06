@@ -197,7 +197,7 @@
     items.forEach((b,i) => { const t = document.createElement('button'); t.type = 'button'; t.className = 'th';
       t.innerHTML = '<img src="'+IMG+'ba/'+b.id+'-after.jpg" loading="lazy" alt=""><span>'+esc(b.title)+'</span>';
       t.setAttribute('aria-label','Show before and after: ' + b.title); t.onclick = () => show(i); lst.appendChild(t); });
-    f.appendChild(main); if (items.length > 1) f.appendChild(lst); else f.style.gridTemplateColumns = '1fr';
+    f.appendChild(main); if (items.length > 1) f.appendChild(lst); else { f.style.gridTemplateColumns = '1fr'; f.classList.add('single'); }
     el.appendChild(f); show(0);
   }
 
